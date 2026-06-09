@@ -7,6 +7,9 @@ spec:
   containers: 
   - name: nginx
     image: nginx
+    #nginx by default starts
 
   - name: almalinux
-    image: almalinux:9    
+    image: almalinux:9  
+    command: ["sleep" , "1000"]  
+    # command keeps running in background-crashloopbackoff

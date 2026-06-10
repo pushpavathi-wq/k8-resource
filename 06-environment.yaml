@@ -16,3 +16,4 @@ spec:
     - name: environment
       value: dev
 
+# environment variables

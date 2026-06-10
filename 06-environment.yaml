@@ -9,11 +9,10 @@ spec:
   - name: nginx
     image: nginx
 
-  env:
-  - name: project
-    value: MIDAS
+    env:
+    - name: project
+      value: MIDAS
 
-  - name: environment
-    value: dev
+    - name: environment
+      value: dev
 
-    

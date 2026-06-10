@@ -11,4 +11,4 @@ spec:
 
       envFrom:
         - configMapRef:
-          name: configuration-expense 
+            name: configuration-expense 

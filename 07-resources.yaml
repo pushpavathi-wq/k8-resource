@@ -13,13 +13,13 @@ spec:
         requests:
           memory: "64MI"
           #mebibytes
-          cpu: "250M"
+          cpu: "250m"
           #millicpu
           
 
         limits:
           memory: "128MI"
-          cpu: "1000M"
+          cpu: "1000m"
           
 
 

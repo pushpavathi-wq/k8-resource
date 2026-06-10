@@ -11,3 +11,4 @@ data:
   value: Retail
 
   # key-valu pair
+# when we do changes in configmap,pod gets deleted and will recreate..

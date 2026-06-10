@@ -11,13 +11,15 @@ spec:
 
       resources:
         requests:
-          cpu: "250M"
-          #millicpu
           memory: "64MI"
           #mebibytes
+          cpu: "250M"
+          #millicpu
+          
 
         limits:
-          cpu: "1000M"
           memory: "128MI"
+          cpu: "1000M"
+          
 
 

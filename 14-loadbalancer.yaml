@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: service-LB
+
+spec:
+  type: LoadBalancer  
+
+  selector:
+    environment: dev
+    project: Retail
+    purpose: failover
+
+  ports:
+    protocol: tcp
+    port: 80
+    # service port-k8
+    targetPort: 80 
+    #target port in pod
+    nodePort: 30007
+    # ec2 node port- communicate with external world

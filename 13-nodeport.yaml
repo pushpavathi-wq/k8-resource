@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nodeport-expense
+
+spec:
+  type: NodePort
+  # Here type specifies the thype of service - opening nodeport
+
+  selectors:
+    environment: dev
+    projectname: Retail
+    purpose: failover
+
+
+    ports:
+    - protocol: tcp
+      port: 80
+      targetPort: 80
+      nodePort: 30007
+
+
+
+###-----------
+
+apiVersion: v1
+kind: pod
+
+metadata:
+  name: serviceport
+
+  labels:
+    environment: dev
+    projectname: Retail
+    purpose: failover
+
+spec: 
+  - name: nginx
+    image: nginx    
+
+  
+
+

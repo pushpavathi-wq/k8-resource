@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+# specifies which kubernetes api to use,v1 is stable version
+kind: Deployment
+# specifies the kubernetes resource - deployment
+# supports rolling updates and rollbacks
+metadata:
+  name: nginx
+# metadata defines the information about resouce, here the deployment resource name is nginx
+
+spec:
+# specification ,defines what kubernetes should create
+  replicas: 3
+  # no of pods to create
+  selector:
+  # selectors used to filter the pods and let deployment know that these pods to be deployed
+    matchLabels:
+      app: nginx
+# deployment looks for the pod with this labels
+
+  template:  ## pod template- inside specifications
+  # template to create pods
+    metadata:
+      labels:
+        app: nginx
+#metadata contains data about pod
+# labels are used as selectors while deployment
+
+    spec:
+# specifications to create container nginx    
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+  # cantainer opening port 80      
+        - containerPort: 80

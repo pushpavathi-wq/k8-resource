@@ -17,6 +17,11 @@ spec:
       app: nginx
 # deployment looks for the pod with this labels
 
+
+#--------------Labels and selectors used to identify pod,but with that we cant create pod, so we go with template
+
+
+
   template:  ## pod template- inside specifications
   # template to create pods
     metadata:

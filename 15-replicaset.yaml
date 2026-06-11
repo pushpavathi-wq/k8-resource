@@ -4,8 +4,21 @@ kind: ReplicaSet
 metadata:
   name: replica-service
 
-  
+spec:
+  replicas: 5
+  selector:
+    MatchLabels:
+      name: MIDAS
 
+template: 
+  metadata: 
+    labels:
+      name: MIDAS
+
+  spec:
+    containers:
+    - name: nginx 
+      image: nginx:latest   
 
 
 

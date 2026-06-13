@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static
+# created pvc named ebs-static  
+
+
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set - static-no storage class
+ 
+  volumeName: ebs-static
+ # PV name
+
+  accessModes:
+    - ReadWriteOnce
+# since it is ebs only one node mount    
+
+
+  resources:
+    requests:
+      storage: 20Gi
+# pvc requesting 20gb to pv
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ebs-static
+ # create nginx pod, not necessary to craete pod always,we can write deployment yaml file that creates pod 
+
+
+  labels:
+    purpose: "ebs-static-demo"
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1a
+# ebs and node should be in same availability zone
+
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
+#create container and mount volume at this location
+
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-static
+  # volumes    
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-lb
+# create service pod to pod communication  
+
+
+spec:
+  type: LoadBalancer
+# service type is LB - k8 automatically craeates it to expose pod to external world  
+  selector: # labels are used as selectors
+    purpose: "ebs-static-demo"
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 80
+    nodePort: 30007
+

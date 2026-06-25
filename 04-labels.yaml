@@ -11,4 +11,20 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx      
+    image: nginx  
+
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labels 
+  labels:
+    environment: dev
+    req: special
+
+spec:
+  containers: 
+  - name: nginx
+    image: nginx            

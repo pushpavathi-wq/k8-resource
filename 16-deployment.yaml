@@ -5,7 +5,7 @@ kind: Deployment
 # supports rolling updates and rollbacks
 metadata:
   name: nginx
-# metadata defines the information about resouce, here the deployment resource name is nginx
+# metadata defines the information about resource, here the deployment resource name is nginx
 
 spec:
 # specification ,defines what kubernetes should create

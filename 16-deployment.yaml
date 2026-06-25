@@ -38,3 +38,31 @@ spec:
         ports:
   # cantainer opening port 80      
         - containerPort: 80
+
+
+
+
+
+
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: expense 
+
+spec: 
+  Replicas: 3
+  selector: 
+    matchLabels: 
+      project_name: Retail 
+
+  template: 
+    metadata: 
+      labels: 
+        project_name: Retail 
+
+  spec: 
+    containers: 
+    - name: nginx
+      image: nginx
+      ports: 
+      - containerPort: 80           

@@ -20,6 +20,27 @@ spec:
         limits:
           memory: "128Mi"
           cpu: "1000m"
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: expense
+
+spec: 
+  containers:
+    - name: nginx
+      image: nginx
+
+      resources:
+        requests: 
+          memory:
+          cpu:
+
+        limits: 
+          memory:
+          cpu: 
           
 
 
